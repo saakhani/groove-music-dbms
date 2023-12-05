@@ -9,6 +9,9 @@ import MusicPlayerPage from './pages/MusicPlayerPage';
 import MusicDiscoveryPage from './pages/MusicDiscoveryPage';
 import SidebarPage from './pages/SidebarPage';
 import PlaylistPage from './pages/PlaylistPage';
+import { Link } from "react-router-dom";
+import Layout from "./components/Layout";
+
 
 
 
@@ -16,15 +19,17 @@ import PlaylistPage from './pages/PlaylistPage';
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AlbumPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/music-player" element={<MusicPlayerPage />} />
-        <Route path="/music-discovery" element={<MusicDiscoveryPage />} />
-        <Route path="/sidebar" element={<SidebarPage />} />
-        <Route path="/playlist" element={<PlaylistPage />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<AlbumPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/music-player" element={<MusicPlayerPage />} />
+          <Route path="/music-discovery" element={<MusicDiscoveryPage />} />
+          <Route path="/sidebar" element={<SidebarPage />} />
+          <Route path="/playlist" element={<PlaylistPage />} />
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }
