@@ -7,10 +7,10 @@ const Footer = () => {
       <Link to="/">Home</Link> | 
       <Link to="/login">Login</Link> | 
       <Link to="/signup">Signup</Link> | 
-      <Link to="/music-player">Music Player</Link> | 
-      <Link to="/music-discovery">Music Discovery</Link> | 
+      <Link to="/songPage">Music Player</Link> | 
       <Link to="/sidebar">Sidebar</Link> | 
-      <Link to="/playlist">Playlist</Link>
+      <Link to="/AlbumPage">Playlist</Link>
+
     </footer>
   );
 };
