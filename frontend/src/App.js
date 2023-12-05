@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import './App.css';
+
+import AlbumPage from './pages/AlbumPage';
+import LoginPage from './pages/LoginPage';  
+import SignupPage from './pages/SignUpPage';  
+import MusicPlayerPage from './pages/MusicPlayerPage';
+import MusicDiscoveryPage from './pages/MusicDiscoveryPage';
+import SidebarPage from './pages/SidebarPage';
+import PlaylistPage from './pages/PlaylistPage';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AlbumPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/music-player" element={<MusicPlayerPage />} />
+        <Route path="/music-discovery" element={<MusicDiscoveryPage />} />
+        <Route path="/sidebar" element={<SidebarPage />} />
+        <Route path="/playlist" element={<PlaylistPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
