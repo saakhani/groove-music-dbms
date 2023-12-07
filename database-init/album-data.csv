@@ -1,3 +1,7 @@
-Album_Name, Artist Name, Duration
-Evermore, Taylor Swift, 60:38
-Midnights, Taylor Swift,44:02
+Album_Name, Artist Name, Duration, Album_Type
+Evermore, Taylor Swift, 60:38, Album
+Midnights, Taylor Swift,44:02, Album
+4 Saal , Bayaan, 25:18, EP
+Christmas Lights, Coldplay, 4:03,Single
+Merry Christmas, Ed Sheeran,3:29, Single
+Let It Snow Let It Snow Let It Snow,Idina Menzel,2:41, Single
