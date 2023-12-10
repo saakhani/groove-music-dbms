@@ -1,0 +1,47 @@
+.search-wrapper-static {
+    display: inline-flex;
+    height: 60px;
+    border-radius: 54px;
+    background-color: rgba(255, 255, 255, 0.065);
+    margin-right: 25px;
+    min-width: 600px;
+    width: 1200px;
+}
+
+.search-wrapper-static:focus-within {
+    outline: 2px solid #a6a6a6;
+}
+
+.search-wrapper-static .input-box-static {
+    border: 0;
+    color: #a6a6a6;
+    background-color: transparent;
+    font-family: "Poppins", sans-serif;
+    font-size: 29px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-left: 25px;
+    width: 90%;
+    vertical-align: middle;
+}
+
+.search-wrapper-static .input-box-static:focus {
+    outline: none;
+}
+
+.search-wrapper-static .search-button-static {
+    background: none;
+    outline: none;
+    border: none;
+    height: 100%;
+    width: auto;
+    right: 10px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.search-icon {
+    color: #a6a6a6;
+    font-size: 34px;
+}

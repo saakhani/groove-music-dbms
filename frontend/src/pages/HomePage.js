@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/pages/HomePage.css'; // Import the CSS file
 import MusicPlayer from '../components/MusicPlayer';
+import Header from '../components/Header';
 
 const Homepage = () => {
     // const toggleSidebar = () => {
@@ -17,11 +18,14 @@ const Homepage = () => {
 
 
     return (
-        <div>
-            {/* <header>
-                <h1>Groove Music</h1>
-            </header> */}
-            <MusicPlayer title={song_details.title} artist={song_details.artist} src={song_details.src} albumArt={song_details.albumArt}/>
+        <div className='homepage'>
+            <Header />
+						<div className='homepage-content'>
+							<div className='music-player-div'>
+								<MusicPlayer title={song_details.title} artist={song_details.artist} src={song_details.src} albumArt={song_details.albumArt}/>
+							</div>
+						</div>
+
             {/* <div className="menu-btn" onClick={alert('dont click this again')}>
                 <div className="menu-icon"></div>
                 <div className="menu-icon"></div>
