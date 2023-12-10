@@ -18,3 +18,15 @@ app.get('/',(req, res) => {
     res.json({"message": "DB3 Application WORKING"});
 })
 
+const albumRouter = require('./router/albumRouter.js');
+const artistRouter = require('./router/artistRouter.js');
+const playlistRouter = require('./router/playlistRouter.js');
+const songRouter = require('./router/songRouter.js');
+const userRouter = require('./router/userRouter.js');
+
+app.use('/album', albumRouter);
+app.use('/artist', artistRouter);
+app.use('/playlist', playlistRouter);
+app.use('/song', songRouter);
+app.use('/user', userRouter);
+

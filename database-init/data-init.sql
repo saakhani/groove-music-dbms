@@ -164,10 +164,11 @@ CREATE TABLE RELEASED_ON (
     SONG_ID VARCHAR(100) NOT NULL,
     ALBUM_ID VARCHAR(100) NOT NULL,
     RELEASE_DATE DATE NOT NULL,
-    POSITION NUMBER NOT NULL UNIQUE,
+    POSITION NUMBER NOT NULL,
     FOREIGN KEY (SONG_ID) REFERENCES SONG(ID),
     FOREIGN KEY (ALBUM_ID) REFERENCES ALBUM(ID),
-    PRIMARY KEY (SONG_ID, ALBUM_ID)
+    PRIMARY KEY (SONG_ID, ALBUM_ID),
+    CONSTRAINT position_check UNIQUE(ALBUM_ID, POSITION)
 );
 
 CREATE OR REPLACE TRIGGER song_duration_trigger
@@ -322,6 +323,31 @@ BEGIN
 END;
 /
 
+CREATE OR REPLACE FUNCTION get_artist_id(artist_name IN VARCHAR2)
+RETURN VARCHAR2
+AS
+    artist_id VARCHAR2(10);
+BEGIN
+    SELECT ID INTO artist_id
+    FROM ARTIST
+    WHERE NAME = artist_name;
+    RETURN artist_id;
+END;
+/
+
+CREATE OR REPLACE FUNCTION get_album_id(album_name IN VARCHAR2)
+RETURN VARCHAR2
+AS
+    album_id VARCHAR2(10);
+BEGIN
+    SELECT ID INTO album_id
+    FROM ALBUM
+    WHERE NAME = album_name;
+    RETURN album_id;
+END;
+/
+
+
 
 exec insert_artist('Taylor Swift');
 exec insert_artist('Coldplay');
@@ -331,6 +357,25 @@ exec insert_album('Evermore', 'Taylor Swift', 'LP');
 exec insert_album('4 Saal', 'Bayaan', 'EP');
 
 exec insert_song('Willow', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 3.34, 1);
+exec insert_song('Champagne Problems', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 4.04, 2);
+exec insert_song('Gold Rush', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 3.05, 3);
+exec insert_song('Tis the Damn Season', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 3.49, 4);
+exec insert_song('Tolerate It', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 4.05, 5);
+exec insert_song('No Body, No Crime', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 3.36, 6);
+exec insert_song('Happiness', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 5.15, 7);
+exec insert_song('Dorothea', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 3.45, 8);
+exec insert_song('Coney Island', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 4.35, 9);
+exec insert_song('Ivy', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 4.20, 10);
+exec insert_song('Cowboy Like Me', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 4.35, 11);
+exec insert_song('Long Story Short', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 3.35, 12);
+exec insert_song('Marjorie', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 4.18, 13);
+exec insert_song('Closure', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 3.01, 14);
+exec insert_song('Evermore', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 5.04, 15);
+
+exec INSERT_ALBUM('Midnights', 'Taylor Swift', 'LP');
+exec insert_song('Lavender Haze', 'Taylor Swift', 'Midnights', '21-OCT-22', 'Pop', 3.22, 1);
+
+
 
 SELECT * FROM ARTIST;
 SELECT * FROM ALBUM;
