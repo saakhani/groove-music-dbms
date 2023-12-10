@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/SignupPage.css'; // Import the CSS file
-import logo from '../Art/DRAFT.png'; // Import the Logo
+import logo from '../assets/logo/logo.png'; // Import the logo image
 
 
 const Signup = () => {

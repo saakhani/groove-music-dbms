@@ -1,0 +1,58 @@
+.main-container {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  flex-grow: 1; /* Allow content to take up available space */
+}
+
+.currently-playing {
+  background-color: #1f1f1f;
+  color: white;
+  box-sizing: border-box;
+  width: 400px; /* Adjust the width as needed */
+  height: 900px;
+  text-align: center;
+  margin-left: auto; /* Push the currently playing box to the right */
+  padding: 20px;
+}
+
+.song-image {
+  max-width: 80%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  height: 30px;
+}
+
+.control-buttons i {
+  font-size: 24px;
+  margin-right: 10px; /* Add spacing to the right of each icon */
+  color: #4CAF50;
+  cursor: pointer;
+  height: 30px;
+}
+
+.time-progress {
+  height: 10px;
+  background-color: #555;
+  margin-top: 10px;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: #4CAF50;
+  position: absolute;
+}
