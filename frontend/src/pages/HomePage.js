@@ -19,8 +19,12 @@ const Homepage = () => {
 
     return (
         <div className='homepage'>
-            <Header />
+					<div className='homepage-header'>
+					<Header />
+					</div>
 						<div className='homepage-content'>
+							<div className='homepage-content-other'>
+							</div>	
 							<div className='music-player-div'>
 								<MusicPlayer title={song_details.title} artist={song_details.artist} src={song_details.src} albumArt={song_details.albumArt}/>
 							</div>
