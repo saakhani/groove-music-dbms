@@ -1,10 +1,12 @@
 import React from 'react';
 import '../styles/SignupPage.css'; // Import the CSS file
+import logo from '../Art/DRAFT.png'; // Import the Logo
+
 
 const Signup = () => {
     return (
         <div>
-            <img className="logo" src="DRAFT.png" alt="Logo" />
+            <img className="logo" src={logo} alt="Logo" />
             <div className="registration-box">
                 <h2>Sign Up</h2>
                 <form>
@@ -17,7 +19,7 @@ const Signup = () => {
                     <input type="password" placeholder="Re-enter Password" required />
                     <button type="submit">Sign Up</button>
                 </form>
-                <a href="login.html" className="signup-link">Already have an account? Login</a>
+                <a href="LoginPage.js" className="signup-link">Already have an account? Login</a>
             </div>
         </div>
     );
