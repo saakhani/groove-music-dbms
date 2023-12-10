@@ -1,3 +1,41 @@
+-- User Table
+
+CREATE TABLE USER_GROOVE (
+    EMAIL VARCHAR(100) PRIMARY KEY,
+    PASSWORD VARCHAR(100) NOT NULL,
+    NAME VARCHAR(100) NOT NULL
+);
+
+CREATE OR REPLACE PROCEDURE signup(email IN VARCHAR2, password IN VARCHAR2, name IN VARCHAR2)
+AS
+    user_count NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO user_count
+    FROM USER_GROOVE
+    WHERE EMAIL = email;
+    IF user_count > 0 THEN
+        DBMS_OUTPUT.PUT_LINE('User already exists');
+    ELSE
+        INSERT INTO USER_GROOVE (EMAIL, PASSWORD, NAME) VALUES (email, password, name);
+    END IF;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE login(email IN VARCHAR2, password IN VARCHAR2)
+AS
+    user_count NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO user_count
+    FROM USER_GROOVE
+    WHERE EMAIL = email AND PASSWORD = password;
+    IF user_count = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('Invalid Credentials');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Login Successful');
+    END IF;
+END;
+/
+
 --Artist Table
 CREATE TABLE ARTIST (
     ID VARCHAR(100) PRIMARY KEY,
@@ -128,7 +166,8 @@ CREATE TABLE RELEASED_ON (
     RELEASE_DATE DATE NOT NULL,
     POSITION NUMBER NOT NULL UNIQUE,
     FOREIGN KEY (SONG_ID) REFERENCES SONG(ID),
-    FOREIGN KEY (ALBUM_ID) REFERENCES ALBUM(ID)
+    FOREIGN KEY (ALBUM_ID) REFERENCES ALBUM(ID),
+    PRIMARY KEY (SONG_ID, ALBUM_ID)
 );
 
 CREATE OR REPLACE TRIGGER song_duration_trigger
@@ -198,14 +237,91 @@ BEGIN
 END;
 /
 
+-- Feature Table
+CREATE TABLE FEATURES (
+    SONG_ID VARCHAR(100) NOT NULL,
+    ARTIST_ID VARCHAR(100) NOT NULL,
+    FOREIGN KEY (SONG_ID) REFERENCES SONG(ID),
+    FOREIGN KEY (ARTIST_ID) REFERENCES ARTIST(ID),
+    PRIMARY KEY (SONG_ID, ARTIST_ID)
+);
 
--- User Table
+-- Playlist Table
+CREATE TABLE PLAYLIST (
+    ID VARCHAR(100) PRIMARY KEY,
+    NAME VARCHAR(100) NOT NULL,
+    DURATION NUMBER,
+    DESCRIPTION VARCHAR(100),
+    CREATOR_ID VARCHAR(100) NOT NULL,
+    FOREIGN KEY (CREATOR_ID) REFERENCES USER_GROOVE(EMAIL)
+);
 
--- CREATE TABLE USER_GROOVE (
---     EMAIL VARCHAR(100) PRIMARY KEY,
---     PASSWORD VARCHAR(100) NOT NULL,
---     NAME VARCHAR(100) NOT NULL
--- );
+CREATE SEQUENCE playlist_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TRIGGER playlist_id_trigger
+BEFORE INSERT ON PLAYLIST
+FOR EACH ROW
+DECLARE
+    new_id VARCHAR2(10);
+    prefix VARCHAR2(2) := 'PL';
+BEGIN
+    SELECT prefix || LPAD(playlist_seq.NEXTVAL, 3, '0') INTO new_id FROM dual;
+    :NEW.ID := new_id;
+    :NEW.DURATION := 0;
+END;
+/
+
+-- Playlist Songs Table
+CREATE TABLE PLAYLIST_SONGS (
+    PLAYLIST_ID VARCHAR(100) NOT NULL,
+    SONG_ID VARCHAR(100) NOT NULL,
+    FOREIGN KEY (PLAYLIST_ID) REFERENCES PLAYLIST(ID),
+    FOREIGN KEY (SONG_ID) REFERENCES SONG(ID),
+    PRIMARY KEY (PLAYLIST_ID, SONG_ID)
+);
+
+CREATE OR REPLACE PROCEDURE create_playlist(playlist_name IN VARCHAR2, creator_email IN VARCHAR2, playlist_description IN VARCHAR2)
+AS
+    playlist_id VARCHAR2(100);
+    creator_count NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO creator_count
+    FROM USER_GROOVE
+    WHERE EMAIL = creator_email;
+    IF creator_count = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('User does not exist');
+    ELSE
+        INSERT INTO PLAYLIST (NAME, CREATOR_ID, DESCRIPTION) VALUES (playlist_name, creator_email, playlist_description);
+    END IF;
+END;
+/
+
+CREATE OR REPLACE TRIGGER playlist_duration_trigger
+BEFORE INSERT ON PLAYLIST_SONGS
+FOR EACH ROW
+DECLARE
+    song_duration NUMBER;
+    playlist_duration NUMBER;
+BEGIN    
+    SELECT DURATION INTO song_duration
+    FROM SONG
+    WHERE ID = :NEW.song_id;
+
+    SELECT DURATION INTO playlist_duration
+    FROM PLAYLIST
+    WHERE ID = :NEW.playlist_id;
+
+    UPDATE PLAYLIST SET DURATION = playlist_duration + song_duration WHERE ID = :NEW.playlist_id;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE insert_into_playlist(playlist_id IN VARCHAR2, song_id IN VARCHAR2)
+AS
+BEGIN
+    INSERT INTO PLAYLIST_SONGS (PLAYLIST_ID, SONG_ID) VALUES (playlist_id, song_id);
+END;
+/
+
 
 exec insert_artist('Taylor Swift');
 exec insert_artist('Coldplay');
@@ -221,23 +337,6 @@ SELECT * FROM ALBUM;
 SELECT * FROM SONG;
 SELECT * FROM RELEASED_ON;
 
--- DROP TABLE RELEASED_ON;
--- DROP TABLE SONG;
--- DROP TABLE ALBUM;
--- DROP TABLE ARTIST;
-
--- DROP SEQUENCE album_seq;
--- DROP SEQUENCE song_seq;
--- DROP SEQUENCE artist_seq;
-
--- DROP TRIGGER album_id_trigger;
--- DROP TRIGGER song_id_trigger;
--- DROP TRIGGER artist_id_trigger;
--- DROP TRIGGER song_duration_trigger;
-
--- DROP PROCEDURE insert_album;
--- DROP PROCEDURE insert_song;
--- DROP PROCEDURE insert_artist;
 
 
 
