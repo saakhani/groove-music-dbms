@@ -50,7 +50,7 @@ function SearchBoxStatic({inputQuery}) {
         type="text"
         value={inputValue}
         onChange={handleInputChange}
-        placeholder="search for an event"
+        placeholder="search here..."
         onKeyPress={handleKeyPress}
       />
       {/* Display the input value */}
