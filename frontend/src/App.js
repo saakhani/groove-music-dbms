@@ -5,10 +5,9 @@ import './App.css';
 import { Link } from "react-router-dom";
 import Layout from "./components/Layout";
 
-import AlbumPage from './pages/AlbumPage';
+
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import Sidebar from './pages/Sidebar';
 import HomePage from './pages/HomePage';
 
 
@@ -22,8 +21,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/sidebar" element={<Sidebar />} />
-          <Route path="/albumPage" element={<AlbumPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>

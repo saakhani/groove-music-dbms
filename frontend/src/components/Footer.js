@@ -7,8 +7,6 @@ const Footer = () => {
       <Link to="/">Home</Link> | 
       <Link to="/login">Login</Link> | 
       <Link to="/signup">Signup</Link> | 
-      <Link to="/sidebar">Sidebar</Link> | 
-      <Link to="/AlbumPage">Playlist</Link>
     </footer>
   );
 };

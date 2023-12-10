@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/LoginPage.css'; // Import the CSS file
+import '../styles/pages/LoginPage.css'; // Import the CSS file
 import logo from '../assets/logo/logo.png'; // Import the logo image 
 
 

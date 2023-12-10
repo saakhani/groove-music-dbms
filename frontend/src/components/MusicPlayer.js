@@ -1,24 +1,41 @@
 import React, { useState, useRef, useEffect } from 'react';
+import '../styles/components/MusicPlayer.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-const MusicPlayer = ({ src, albumArt }) => {
+
+
+const MusicPlayer = ({ title, artist ,src, albumArt }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
+    const [isLooping, setIsLooping] = useState(false);
     const audioRef = useRef(new Audio(src));
     const { current: audio } = audioRef;
 
-    useEffect(() => {
-        audio.addEventListener('timeupdate', () => {
-            setCurrentTime(audio.currentTime);
-            if (!duration) {
-                setDuration(audio.duration);
-            }
-        });
+    const toggleLoop = () => {
+      setIsLooping(!isLooping);
+    };
 
-        return () => {
-            audio.removeEventListener('timeupdate', () => setCurrentTime(audio.currentTime));
-        };
-    }, [audio, duration]);
+    useEffect(() => {
+      audio.loop = isLooping;
+
+      audio.addEventListener('timeupdate', () => {
+          setCurrentTime(audio.currentTime);
+          if (!duration) {
+              setDuration(audio.duration);
+          }
+      });
+
+      audio.addEventListener('ended', () => {
+        setIsPlaying(false);
+      });
+
+      return () => {
+          audio.removeEventListener('timeupdate', () => setCurrentTime(audio.currentTime));
+          audio.removeEventListener('ended', () => setIsPlaying(false));
+      };
+    }, [audio, duration, isLooping]);
 
     const togglePlayPause = () => {
         setIsPlaying(!isPlaying);
@@ -35,19 +52,52 @@ const MusicPlayer = ({ src, albumArt }) => {
         setCurrentTime(time);
     };
 
+    function formatTime(seconds) {
+      let minutes = Math.floor(seconds / 60);
+      let remainingSeconds = Math.floor(seconds % 60);
+    
+      // if (minutes < 10) { minutes = "0" + minutes; }
+      if (remainingSeconds < 10) { remainingSeconds = "0" + remainingSeconds; }
+    
+      return minutes + ":" + remainingSeconds;
+    }
+
     return (
-        <div>
-            <img src={albumArt} alt="Album Art" style={{ width: '100px', height: '100px' }} />
-            <button onClick={togglePlayPause}>
-                {isPlaying ? 'Pause' : 'Play'}
-            </button>
-            <input
-                type="range"
-                value={currentTime}
-                max={duration}
-                onChange={onTimeSliderChange}
-            />
+      <div className='media-player'>
+        <img className = 'album-art' src={albumArt} alt="Album Art"/>
+        <div className='media-info'>
+          <div className='media-title'>{title}</div>
+          <div className='media-artist'>{artist}</div>
         </div>
+        <div className='media-controls'>
+          <button className = "button-loop" onClick={toggleLoop}>
+            {isLooping ? 
+            <FontAwesomeIcon className = "loop-toggle-active" icon={icon({name: 'repeat', style: 'solid'})}/> :
+            <FontAwesomeIcon className = "loop-toggle-disable" icon={icon({name: 'repeat', style: 'solid'})}/>}
+          </button>
+          <button className = "button-play-pause" onClick={togglePlayPause}>
+            {isPlaying ? 
+            <FontAwesomeIcon icon={icon({name: 'pause', style: 'solid'})}/> : 
+            <FontAwesomeIcon icon={icon({name: 'play', style: 'solid'})}/>}
+          </button>
+          <div className='item-invisible'>
+            <FontAwesomeIcon icon={icon({name: 'play', style: 'solid'})}/>
+          </div>
+        </div>
+        <div className='timeline'>
+          <input className='timeline-slider'
+          type="range"
+          value={currentTime}
+          max={duration}
+          onChange={onTimeSliderChange}
+          />
+          <div className='time-display'>
+            <span className='time-current'>{formatTime(currentTime)}</span>
+            <span className='time-total'>{formatTime(duration)}</span>
+          </div>
+        </div>
+
+      </div>
     );
 };
 
