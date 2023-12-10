@@ -10,7 +10,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import Sidebar from './pages/Sidebar';
 import SongPage from './pages/SongPage';
-import Home from './pages/PlaylistPage';
+import HomePage from './pages/HomePage';
 
 
 
@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/sidebar" element={<Sidebar />} />
