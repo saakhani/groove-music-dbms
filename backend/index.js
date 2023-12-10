@@ -1,26 +1,20 @@
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const tableCreationRouter = require('./router/tableCreationRouter.js');
 const express = require('express');
 
-const app = express();
 const port = 3001;
+const app = express();
 
-
+app.use(express.json());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-// app.use('/TableCreation', tableCreationRouter);
+app.listen(port, () => {
+    console.log(`groove_backend at http://localhost:${port}`)
+  })
 
 app.get('/',(req, res) => {
     res.json({"message": "DB3 Application WORKING"});
 })
-
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-  })
-
-
-
-
 
