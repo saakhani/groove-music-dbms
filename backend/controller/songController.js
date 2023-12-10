@@ -28,9 +28,15 @@ module.exports = {
   getSongsByAlbumID: async function  (req, res){
     let connection ;
     try {
+      console.log(req.params.id)
       console.log("hitttt--<<<<<<")
       connection = await getConnection();
-      const table = await connection.execute(`SELECT * FROM SONG WHERE ALBUM_ID = ${req.params.id}`);
+      const table = await connection.execute(`
+        SELECT RELEASED_ON.POSITION, SONG.NAME, SONG.DURATION, SONG.GENRE
+        FROM RELEASED_ON INNER JOIN SONG ON RELEASED_ON.SONG_ID = SONG.ID INNER JOIN ARTIST ON SONG.ARTIST_ID = ARTIST.ID
+        WHERE RELEASED_ON.ALBUM_ID LIKE UPPER('${req.params.id}')
+        ORDER BY RELEASED_ON.POSITION ASC
+      `);
       res.status(200).send(table);
     } 
     catch (error) {
@@ -48,5 +54,5 @@ module.exports = {
         }
       }
     } 
-  }
+  },
 }
