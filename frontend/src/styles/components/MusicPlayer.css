@@ -1,58 +1,57 @@
-.main-container {
-  display: flex;
-  flex-grow: 1;
-  overflow: hidden; /* Prevent content overflow */
+body {
+  background-color: #e5e5e5;
 }
 
-.content {
-  max-width: 800px;
-  margin: 0 auto;
-  flex-grow: 1; /* Allow content to take up available space */
-}
-
-.currently-playing {
-  background-color: #1f1f1f;
-  color: white;
-  box-sizing: border-box;
-  width: 400px; /* Adjust the width as needed */
-  height: 900px;
+.App {
+  font-family: sans-serif;
   text-align: center;
-  margin-left: auto; /* Push the currently playing box to the right */
-  padding: 20px;
 }
 
-.song-image {
-  max-width: 80%;
-  height: auto;
-  border-radius: 12px;
-  margin-bottom: 10px;
+.component {
+  background-color: white;
+  max-width: 600px;
+  margin: 1em auto;
+  padding-bottom: 2em;
+  border: 0.1px solid black;
+  border-radius: 10px;
 }
 
-.control-buttons {
-  display: flex;
+.musicCover {
+  border-radius: 10%;
+}
+
+.playButton {
+  background: none;
+  border: none;
+  align-items: center;
   justify-content: center;
-  margin-top: 10px;
-  height: 30px;
 }
 
-.control-buttons i {
-  font-size: 24px;
-  margin-right: 10px; /* Add spacing to the right of each icon */
-  color: #4CAF50;
-  cursor: pointer;
-  height: 30px;
+.subTitle {
+  margin-top: -1em;
+  color: #4f4f4f;
 }
 
-.time-progress {
-  height: 10px;
-  background-color: #555;
-  margin-top: 10px;
-  position: relative;
+.time {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  color: #828282;
+  font-size: smaller;
 }
 
-.progress-bar {
-  height: 100%;
-  width: 0;
-  background-color: #4CAF50;
-  position: absolute;
+.timeline {
+  width: 80%;
+  background-color: #27ae60;
+}
+
+input[type="range"] {
+  background-color: #27ae60;
+}
+
+@media (max-width: 900px) {
+  .component {
+    width: 50%;
+  }
 }

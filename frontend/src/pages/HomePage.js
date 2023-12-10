@@ -10,22 +10,21 @@ const Homepage = () => {
 
     return (
         <div>
-            <header>
+            {/* <header>
                 <h1>Groove Music</h1>
-            </header>
-            <MusicPlayer />
+            </header> */}
+            <MusicPlayer src = {require('../assets/music/taylor-swift/lp/evermore/01.mp3')} albumArt = {require('../assets/music/taylor-swift/lp/evermore/cover.jpg')}/>
             {/* <div className="menu-btn" onClick={alert('dont click this again')}>
                 <div className="menu-icon"></div>
                 <div className="menu-icon"></div>
                 <div className="menu-icon"></div>
             </div> */}
             {/* Sidebar and other content */}
-            <main>
+            {/* <main>
                 <h2>Featured Playlists</h2>
                 <div className="featured-playlist">
-                    {/* Playlist cards */}
                 </div>
-            </main>
+            </main> */}
         </div>
     );
 };
