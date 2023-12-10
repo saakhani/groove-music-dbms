@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Music App</title>
+    <!-- Include FontAwesome CSS (you may need to adjust the link based on your project setup) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column; /* Display children in a column */
+        }
+
+     
+
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden; /* Prevent content overflow */
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            flex-grow: 1; /* Allow content to take up available space */
+        }
+
+        .currently-playing {
+            background-color: #1f1f1f;
+            color: white;
+            box-sizing: border-box;
+            width: 400px; /* Adjust the width as needed */
+            height: 900px;
+            text-align: center;
+            margin-left: auto; /* Push the currently playing box to the right */
+            padding: 20px;
+        }
+
+        .song-image {
+            max-width: 80%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .control-buttons i {
+            font-size: 24px;
+            margin-right: 10px; /* Add spacing to the right of each icon */
+            color: #4CAF50;
+            cursor: pointer;
+        }
+
+        .time-progress {
+            height: 10px;
+            background-color: #555;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #4CAF50;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Main Content -->
+    <div class="main-container">
+        
+
+        <!-- Currently Playing Box -->
+        <div class="currently-playing" id="currentlyPlayingBox">
+            <img class="song-image" src="Playlist1.png" alt="Song Image">
+            <h2 id="currentlyPlayingSong">Song Title</h2>
+            <p id="currentlyPlayingArtist">Artist Name</p>
+            <p id="timeDuration">0:00 / 3:30</p>
+
+         <!-- Control Buttons -->
+<div class="control-buttons">
+    <i class="fas fa-backward" onclick="skipBackward()" style="margin-right: 10px;"></i>
+    <i class="fas fa-play" onclick="playPause()" style="margin-right: 10px;"></i>
+    <i class="fas fa-pause" onclick="playPause()" style="margin-right: 10px;"></i>
+    <i class="fas fa-forward" onclick="skipForward()" style="margin-right: 10px;"></i>
+</div>
+
+
+            <!-- Time Progress Bar -->
+            <div class="time-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+    <script>
+        // Simulate changing the currently playing song (you will replace this with your actual logic)
+        setInterval(() => {
+            const songTitle = "Your Song Title";
+            const artistName = "Artist Name";
+            const timeDuration = "0:00 / 3:30"; // Replace with actual time duration
+            const progressPercentage = 30; // Replace with actual progress percentage
+            updateCurrentlyPlaying(songTitle, artistName, timeDuration, progressPercentage);
+        }, 5000); // Update every 5 seconds (adjust as needed)
+
+        function updateCurrentlyPlaying(songTitle, artistName, timeDuration, progressPercentage) {
+            const currentlyPlayingSong = document.getElementById('currentlyPlayingSong');
+            const currentlyPlayingArtist = document.getElementById('currentlyPlayingArtist');
+            const timeDurationElement = document.getElementById('timeDuration');
+            const progressBar = document.getElementById('progressBar');
+
+            currentlyPlayingSong.textContent = songTitle;
+            currentlyPlayingArtist.textContent = artistName;
+            timeDurationElement.textContent = timeDuration;
+
+            // Update progress bar width based on the progressPercentage
+            progressBar.style.width = `${progressPercentage}%`;
+        }
+
+        function playPause() {
+            // Add logic for play/pause action
+            console.log('Play/Pause icon clicked');
+        }
+
+        function skipBackward() {
+            // Add logic for skip backward action
+            console.log('Skip Backward icon clicked');
+        }
+
+        function skipForward() {
+            // Add logic for skip forward action
+            console.log('Skip Forward icon clicked');
+        }
+    </script>
+
+</body>
+</html>

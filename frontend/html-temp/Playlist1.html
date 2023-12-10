@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill Hits</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden; /* Hide overflow to prevent scrolling on the body */
+        }
+
+        .playlist-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40vh; /* Set initial height */
+            background-color: #1f1f1f;
+            text-align: center;
+            transition: height 0.1s ease; /* Smooth transition for height change */
+        }
+
+        .playlist-image {
+            max-width: auto;
+            max-height: auto;
+            margin-right: 700px;
+            border-radius: 50px;
+        }
+
+        .playlist-details {
+            text-align: left;
+        }
+
+        .playlist-name {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .playlist-info {
+            color: #888;
+        }
+
+        .playlist {
+            margin: 20px;
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: 80%; /* Maximum height for the song list */
+            display: flex;
+            flex-direction: column; /* Ensure songs are displayed in a column */
+        }
+
+        .song {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .song img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+.song-details {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 5px; /* Adjust spacing as needed */
+}
+
+.song-title,
+.song-artist,
+.song-album,
+.song-duration {
+    font-weight: bold;
+}
+        .subheading {
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Playlist Header -->
+    <div class="playlist-header" id="playlistHeader">
+        <div class="playlist-image">
+            <img src="play" alt="Playlist Image">
+        </div>
+        <div class="playlist-details">
+            <div class="playlist-name">Chill Hits</div>
+            <div class="playlist-info">Number of Songs: 10</div>
+            <div class="playlist-info">Total Time: 30:00</div>
+        </div>
+    </div>
+
+    <!-- Playlist Songs -->
+    <div class="playlist" onscroll="adjustPlaylistHeaderSize()">
+        <!-- Add more songs as needed -->
+        <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>   <div class="song">
+            <img src="Playlist1.png" alt="Song 1">
+            <div class="song-details">
+                <div class="song-title">#1</div>
+                <div class="song-artist">Artist 1</div>
+                <div class="song-album">Album 1</div>
+                <div class="song-duration">Time: 3:00</div>
+            </div>
+        </div>
+        <!-- Repeat this song block as needed -->
+    </div>
+
+    <script>
+        function adjustPlaylistHeaderSize() {
+            const playlistHeader = document.getElementById('playlistHeader');
+            const playlist = document.querySelector('.playlist');
+            const scrollPercentage = (playlist.scrollTop / (playlist.scrollHeight - playlist.clientHeight)) * 100;
+
+            // Adjust playlist header height based on scroll percentage
+            playlistHeader.style.height = `calc(40vh - ${scrollPercentage * 0.4}px)`;
+        }
+    </script>
+
+</body>
+</html>
