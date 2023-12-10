@@ -5,7 +5,8 @@ const songController = require("../controller/songController.js");
 const router = express.Router();
 
 router.get("/", songController.getAllSongs);
-router.get("/album/:id", songController.getSongsByAlbumId); 
+router.get("/album/:id", songController.getSongsByAlbumID); 
+// router.get("/album/:name", songController.getSongsByAlbumName);
 
 
 
