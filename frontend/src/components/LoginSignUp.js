@@ -71,7 +71,7 @@ const Login = ({ onSignUp, onLogin, onClose, onWindowClick }) => {
 			</button>
 			{!isSignUp && ( 
 			<div className='login-comp'>
-				<div className='login-title'>enter your details</div>
+				<div className='login-title'>Login to Groove</div>
 				<input className="username" type="text" placeholder='email' value={usernameLogin} onChange={(e) => setUsernameLogin(e.target.value)} />
 				<input className="password" type="password" placeholder='password' value={passwordLogin} onChange={(e) => setPasswordLogin(e.target.value)} />
 				<button className="login-button" onClick={handleLogin}>login</button>
@@ -90,7 +90,7 @@ const Login = ({ onSignUp, onLogin, onClose, onWindowClick }) => {
       <input className="password" type="password" placeholder='password' value={passwordSignUp} onChange={(e) => setPasswordSignUp(e.target.value)} />
       <input className="confirm-password" type="password" placeholder='confirm password' value={confirmPasswordSignUp} onChange={(e) => setConfirmPasswordSignUp(e.target.value)} />
       {errorMessage && <div className='error-message'>{errorMessage}</div>}
-      <button className="signup-button" onClick={handleSignUp}>Sign Up</button>
+      <button className="signup-button" onClick={handleSignUp}>sign up</button>
       <div className='signup-footer'>Already have an account? 
 				<a href='#' onClick={() => setSignUp(false)}>Login</a>
 			</div>
