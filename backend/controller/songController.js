@@ -6,7 +6,7 @@ module.exports = {
     try {
       console.log("hitttt--<<<<<<")
       connection = await getConnection();
-      const table = await connection.execute("SELECT * FROM SONG");
+      const table = await connection.execute("select * from SONG INNER JOIN RELEASED_ON ON SONG.ID = RELEASED_ON.SONG_ID");
       res.status(200).send(table);
     } 
     catch (error) {

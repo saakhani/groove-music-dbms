@@ -1,40 +1,41 @@
 /* SearchResultCard.css */
 
 .search-result-card {
-    width: 250px;
     background-color: rgba(255, 255, 255, 0.065);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    padding: 16px;
+    margin: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .search-result-card:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(253, 253, 253, 0.1);
+    margin: 15px;
+    padding: 10px;
     box-sizing: border-box;
   }
   
-  .result-title {
+  .result-name {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 8px;
     margin-top: 8px;
     color: #a6a6a6;
   }
-  
-  .result-description {
-    font-size: 14px;
+
+  .result-artist {
+    font-size: 15px;
+    font-weight: 400;
     color: #a6a6a6;
-    margin-bottom: 16px;
-  }
-  
-  .result-link {
-    color: #a6a6a6;
-    text-decoration: none;
-    font-weight: bold;
-    display: block;
   }
 
   .result-image img{
     border-radius: 8px;
-    margin: auto;
-    width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
     height: auto;  
   }
 

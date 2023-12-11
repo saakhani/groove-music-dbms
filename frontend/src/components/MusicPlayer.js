@@ -1,24 +1,36 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../styles/components/MusicPlayer.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 
 
 const MusicPlayer = ({ title, artist ,src, albumArt }) => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [isLooping, setIsLooping] = useState(false);
     const audioRef = useRef(new Audio(src));
     const { current: audio } = audioRef;
+    const [duration, setDuration] = useState(audio.duration);
 
     const toggleLoop = () => {
       setIsLooping(!isLooping);
     };
 
     useEffect(() => {
+      const wasPlaying = !audio.paused;
+      audio.src = src;
+      audio.oncanplaythrough = () => { // when audio data is enough to start playing
+          if (wasPlaying) audio.play();
+      }
+  }, [src]);
+
+    useEffect(() => {
       audio.loop = isLooping;
+
+      audio.addEventListener('loadedmetadata', () => {
+        setDuration(audio.duration);
+    });
 
       audio.addEventListener('timeupdate', () => {
           setCurrentTime(audio.currentTime);
@@ -32,8 +44,9 @@ const MusicPlayer = ({ title, artist ,src, albumArt }) => {
       });
 
       return () => {
-          audio.removeEventListener('timeupdate', () => setCurrentTime(audio.currentTime));
-          audio.removeEventListener('ended', () => setIsPlaying(false));
+        audio.removeEventListener('loadedmetadata', () => setDuration(audio.duration));  
+        audio.removeEventListener('timeupdate', () => setCurrentTime(audio.currentTime));
+        audio.removeEventListener('ended', () => setIsPlaying(false));
       };
     }, [audio, duration, isLooping]);
 

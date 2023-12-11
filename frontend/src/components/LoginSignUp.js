@@ -76,8 +76,8 @@ const Login = ({ onSignUp, onLogin, onClose, onWindowClick }) => {
 				<input className="password" type="password" placeholder='password' value={passwordLogin} onChange={(e) => setPasswordLogin(e.target.value)} />
 				<button className="login-button" onClick={handleLogin}>Login</button>
 				{errorMessage && <div className='error-message'>{errorMessage}</div>}
-				<div className='login-footer'>Don't have an account? 
-					<a href='#' onClick={() => setSignUp(true)}>Sign Up</a>
+				<div className='login-footer'>Don't have an account?
+					<a href='#' onClick={() => setSignUp(true)}> Sign Up</a>
 				</div>
 			</div>
 			)}
@@ -92,7 +92,7 @@ const Login = ({ onSignUp, onLogin, onClose, onWindowClick }) => {
       {errorMessage && <div className='error-message'>{errorMessage}</div>}
       <button className="signup-button" onClick={handleSignUp}>Sign up</button>
       <div className='signup-footer'>Already have an account? 
-				<a href='#' onClick={() => setSignUp(false)}>Login</a>
+				<a href='#' onClick={() => setSignUp(false)}> Login</a>
 			</div>
 			</div>
 			)}

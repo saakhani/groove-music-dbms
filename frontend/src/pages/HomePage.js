@@ -15,14 +15,13 @@ const Homepage = () => {
 		const params = useParams();
 		const [searchQuery] = useState(params.SearchBoxQuery);
 		const [searchResults, setSearchResults] = useState([]);
-
-
-		const song_details = {
+		const [songDetails, setSongDetails] = useState({			
 			title: 'willow',
 			artist: 'Taylor Swift',
 			src: require(`../assets/music/taylor-swift/lp/evermore/01.mp3`),
 			albumArt: require(`../assets/music/taylor-swift/lp/evermore/cover.jpg`),
-		};
+		});
+
 
 	
 		useEffect(() => {
@@ -34,19 +33,15 @@ const Homepage = () => {
 			})
 			.then(response => response.json())
 			.then(data => {
-					console.log(data); // Log the response data here
-					console.log(data.rows); // Log the response data here
-
-
-
-	
+					// console.log(data); // Log the response data here
+					// console.log(data.rows); // Log the response data here
 					const searchData = data.rows.map(item => {
 							return {
 									id: item[0],
 									name: item[1],
-									duration: item[2],
-									artist: item[4],
-									imgSrc: require(`../assets/music/taylor-swift/lp/evermore/cover.jpg`),
+									artist_id: item[4],
+									album_id: item[6],
+									track_number: item[8],
 							};
 					});
 	
@@ -54,15 +49,48 @@ const Homepage = () => {
 			})
 			.catch(error => console.error('Error fetching search results:', error));
 	}, [searchQuery]);
+
+	const [artistName, setArtistName] = useState('');
+	const [albumName, setAlbumName] = useState('');
+	const [songPosition, setSongPosition] = useState(0);
+
+	const handleResultCardClick = (eventDetails) => {
+			// fetch(`http://localhost:3001/album/${eventDetails.id}`, {
+			// 		method: 'GET',
+			// 		headers: {
+			// 				'Content-Type': 'application/json',
+			// 		},
+			// })
+			// .then(response => response.json())
+			// .then(data => {
+			// 		// console.log(data); // Log the response data here
+			// 		// console.log(data.rows); // Log the response data here
+			// 		const searchData = data.rows.map(item => {
+			// 				return {
+			// 						id: item[0],
+			// 						name: item[1],
+			// 						duration: item[2],
+			// 						artist: item[4],
+			// 						imgSrc: require(`../assets/music/taylor-swift/lp/evermore/cover.jpg`),
+			// 				};
+			// 		});
 	
-		// const onPlayClick = (eventDetails) => {
-		// 	setSongDetails({
-		// 		title: eventDetails.name,
-		// 		artist: eventDetails.artist,
-		// 		src: require(`../assets/music/taylor-swift/lp/evermore/02.mp3`),
-		// 		albumArt: require(`../assets/music/taylor-swift/lp/evermore/cover.jpg`),
-		// 	});
-		// };
+			// 		setSearchResults(searchData);
+			// })
+
+			// .catch(error => console.error('Error fetching search results:', error));
+
+
+
+
+		setSongDetails({
+			title: eventDetails.name,
+			artist:	eventDetails.artist,
+			src: require(`../assets/music/taylor-swift/lp/midnights/01.mp3`),
+			albumArt: require(`../assets/music/taylor-swift/lp/midnights/cover.jpg`),
+		});
+	};
+
 
 
     return (
@@ -74,12 +102,12 @@ const Homepage = () => {
 							<div className='homepage-content-other'>
 								<div className = 'search-results-container'>
 									{searchResults.map((searchResult) => (
-										<SearchResultCard eventDetailsH={searchResult} key={searchResult.id} />
+										<SearchResultCard onClick = {handleResultCardClick} eventDetailsH={searchResult} key={searchResult.id} />
 									))}'
 								</div>
 							</div>	
 							<div className='music-player-div'>
-								<MusicPlayer title={song_details.title} artist={song_details.artist} src={song_details.src} albumArt={song_details.albumArt}/>
+								<MusicPlayer title={songDetails.title} artist={songDetails.artist} src={songDetails.src} albumArt={songDetails.albumArt}/>
 							</div>
 						</div>
 

@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #2a2d3f77;
+    background-color: #2a2d3fec;
     border: 2.5px solid #2a2d3f77;
     border-radius: 36px;
     box-shadow: 0 0 15px rgba(119, 119, 119, 0.3);
@@ -33,6 +33,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.login-footer a{
+    color: #1d63b9;;
+    text-decoration: none;
+}
+
+.signup-footer a{
+    color: #1d63b9;;
+    text-decoration: none;
 }
 
 .username, .password, .confirm-password, .fullname, .phone{

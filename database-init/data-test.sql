@@ -1,1 +1,1 @@
-select * from SONG
+select * from SONG INNER JOIN RELEASED_ON ON SONG.ID = RELEASED_ON.SONG_ID;
