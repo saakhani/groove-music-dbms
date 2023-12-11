@@ -3,7 +3,7 @@
     flex-direction: row;
     flex-grow: 0;
     position: absolute;
-    background-color: #ffffff;
+    background-color: #121418;
     border-radius: 24px;
     width: 380px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
@@ -12,7 +12,7 @@
     padding-top: 15px;
     padding-bottom: 10px;
     padding-right: 10px;
-    border: #0391cb 2px solid;
+    border: #2a2d3f77 2px solid;
     outline: 0;
 }
 
@@ -32,11 +32,11 @@
 
 
 .profile-window .user-name{
-    font-family: "M PLUS Rounded 1c", Helvetica;
+    font-family: "Poppins", Helvetica;
     font-size: 30px;
     font-weight: 600;
     background: transparent;
-    color: #2a2d3f;
+    color: #a6a6a6;
     border: 0;
     outline: 0;
 }
@@ -44,11 +44,11 @@
 .profile-window .user-email {
     margin-top: -20px;
     padding-top: 0px;
-    font-family: "M PLUS Rounded 1c", Helvetica;
+    font-family: "Poppins", Helvetica;
     font-size: 18px;
     font-weight: 300;
     background: transparent;
-    color: #2a2d3f;
+    color: #a6a6a6;
     border: 0;
     outline: 0;
     text-decoration: none; /* Added to remove underline */
@@ -73,8 +73,8 @@
 }
 
 .profile-window .view-profile{
-    font-family: "M PLUS Rounded 1c", Helvetica;
-    color: #2a2d3f;
+    font-family: "Poppins", Helvetica;
+    color: #a6a6a6;
     font-size: 18px;
     font-weight: 400;
     text-decoration: none; /* Added to remove underline */   
