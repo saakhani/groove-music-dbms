@@ -67,7 +67,7 @@ const Login = ({ onSignUp, onLogin, onClose, onWindowClick }) => {
 	return (
 		<div className='login-popup' onClick={onWindowClick}>
 			<button className='exit-button' onClick={onClose}>
-				<FontAwesomeIcon icon={icon({name: 'xmark', style: 'solid'})} style={{color: "#0391cb",}} />
+				<FontAwesomeIcon icon={icon({name: 'xmark', style: 'solid'})} style={{color: "#a6a6a6",}} />
 			</button>
 			{!isSignUp && ( 
 			<div className='login-comp'>

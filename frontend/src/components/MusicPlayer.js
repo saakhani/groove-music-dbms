@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../styles/components/MusicPlayer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { icon, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 
 
@@ -12,6 +12,14 @@ const MusicPlayer = ({ title, artist ,src, albumArt }) => {
     const audioRef = useRef(new Audio(src));
     const { current: audio } = audioRef;
     const [duration, setDuration] = useState(audio.duration);
+    const [volume, setVolume] = useState(1);
+    const [isVolumeSliderVisible, setIsVolumeSliderVisible] = useState(false);
+
+    const handleVolumeChange = (e) => {
+      const volume = e.target.value;
+      audio.volume = volume;
+      setVolume(volume);
+    };
 
     const toggleLoop = () => {
       setIsLooping(!isLooping);
@@ -82,6 +90,19 @@ const MusicPlayer = ({ title, artist ,src, albumArt }) => {
       return minutes + ":" + remainingSeconds;
     }
 
+    const getVolumeIcon = () => {
+      if (volume <= 0.01) {
+        return icon({ name: 'volume-xmark', style: 'solid' });
+      } else if (volume <= 0.25) {
+        return icon({ name: 'volume-off', style: 'solid' });
+      } else if (volume <= 0.75){
+        return icon({name: 'volume-low', style:'solid'})
+      } else {
+        return icon({ name: 'volume-high', style: 'solid' });
+      }
+    };
+
+
     return (
       <div className='media-player'>
         <img className = 'album-art' src={albumArt} alt="Album Art"/>
@@ -100,8 +121,22 @@ const MusicPlayer = ({ title, artist ,src, albumArt }) => {
             <FontAwesomeIcon icon={icon({name: 'pause', style: 'solid'})}/> : 
             <FontAwesomeIcon icon={icon({name: 'play', style: 'solid'})}/>}
           </button>
-          <div className='item-invisible'>
-            <FontAwesomeIcon icon={icon({name: 'play', style: 'solid'})}/>
+          <div className='volume'>
+          {isVolumeSliderVisible && (
+              <div className='volume-slider-div'>
+                <input className = 'volume-slider'
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={volume}
+                  onChange={handleVolumeChange}
+                />
+              </div>
+            )}  
+            <button className='volume-button' onClick={() => {setIsVolumeSliderVisible(!isVolumeSliderVisible)}}>
+              <FontAwesomeIcon className = "volume-button-icon" icon={getVolumeIcon()} />
+            </button>
           </div>
         </div>
         <div className='timeline'>

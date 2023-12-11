@@ -32,15 +32,9 @@
   background-color: transparent;
   border: none;
   outline: none;
+  padding-left: 20px;
 }
 
-.media-player .item-invisible {
-  font-size: 25px;
-  visibility: hidden;
-  border: none;
-  outline: none;
-  margin-left: auto;
-}
 
 .media-player .button-loop {
   font-size: 25px;
@@ -49,6 +43,16 @@
   outline: none;
   margin-right: auto;
 }
+
+.media-player .volume-button{
+  font-size: 25px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #a6a6a6;
+}
+
+
 
 .media-player .loop-toggle-active {
   color: #1d63b9;
@@ -106,5 +110,19 @@ div.timeline {
   color: #a6a6a6;
 }
 
+input[type="range"].volume-slider  {
+  appearance: slider-vertical;
+  position: absolute;
+  z-index: 1000;
+  bottom: 135px;
+  right: -23px;
+  height: 80px;
 
+}
 
+.media-player .volume {
+  margin-left: auto;
+  padding: 0px;
+  width: 37px;
+  align-items: flex-end;
+}

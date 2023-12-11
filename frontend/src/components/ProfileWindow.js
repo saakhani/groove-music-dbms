@@ -51,7 +51,7 @@ const ProfileWindow = ({onWindowClick, onClose }) => {
 				<div className='right'>
 					<img className = "profile-image" src={require(`../assets/profile-pictures/${user.imgSrc}`)} alt="Profile" />  
 					<button className='logout-button' onClick={handleLogout}>
-							<FontAwesomeIcon icon={icon({name: 'right-from-bracket', style: 'solid'})} style={{color: "#0391cb",}} />
+							<FontAwesomeIcon icon={icon({name: 'right-from-bracket', style: 'solid'})} style={{color: "#a6a6a6",}} />
 					</button>
 				</div>
 			</div>

@@ -48,7 +48,7 @@ const SearchResultCard = ({ eventDetailsH, onClick}) => {
 
 
   useEffect(() => {
-    if (artistName != '' && albumName != '' && albumType != '') {
+    if (artistName !== '' && albumName !== '' && albumType !== '') {
       setImageSrc(`${artistName.toLowerCase().replace(/\s/g, '-')}/${albumType.toLowerCase()}/${albumName.toLowerCase().replace(/\s/g, '-')}`);
     }
   }, [artistName, albumType, albumName]);
