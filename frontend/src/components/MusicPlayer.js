@@ -60,9 +60,16 @@ const MusicPlayer = ({ title, artist ,src, albumArt }) => {
     };
 
     const onTimeSliderChange = (e) => {
-        const time = e.target.value;
+      const time = e.target.value;
+      if (audio.paused) {
         audio.currentTime = time;
         setCurrentTime(time);
+        audio.pause();
+      }
+      else{
+        audio.currentTime = time;
+        setCurrentTime(time);
+      }
     };
 
     function formatTime(seconds) {

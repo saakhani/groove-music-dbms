@@ -71,7 +71,7 @@ const SearchResultCard = ({ eventDetailsH, onClick}) => {
         <img src={require(`../assets/music/${imageSrc}/cover.jpg`)} alt={`Event: ${eventDetails.title} at ${eventDetails.artist}`} />
       </div>
       <div className="result-name">{eventDetails.name}</div>
-      <div className="result-artist">{eventDetails.artist}</div>
+      <div className="result-artist">{artistName}</div>
     </div>
   ); 
 };

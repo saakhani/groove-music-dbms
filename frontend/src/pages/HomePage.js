@@ -21,6 +21,7 @@ const Homepage = () => {
 			src: require(`../assets/music/taylor-swift/lp/evermore/01.mp3`),
 			albumArt: require(`../assets/music/taylor-swift/lp/evermore/cover.jpg`),
 		});
+		const [initMusicPlayer, setInitMusicPlayer] = useState(false);
 
 
 	
@@ -52,6 +53,7 @@ const Homepage = () => {
 
 
 	const handleResultCardClick = (eventDetails) => {
+		setInitMusicPlayer(true);
 		const paddedTrackNumber = eventDetails.track_number.toString().padStart(2, '0');
 		setSongDetails({
 			title: eventDetails.name,
@@ -75,10 +77,12 @@ const Homepage = () => {
 										<SearchResultCard onClick = {handleResultCardClick} eventDetailsH={searchResult} key={searchResult.id} />
 									))}'
 								</div>
-							</div>	
+							</div>
+							{	initMusicPlayer &&
 							<div className='music-player-div'>
 								<MusicPlayer title={songDetails.title} artist={songDetails.artist} src={songDetails.src} albumArt={songDetails.albumArt}/>
 							</div>
+							}
 						</div>
 
             {/* <div className="menu-btn" onClick={alert('dont click this again')}>

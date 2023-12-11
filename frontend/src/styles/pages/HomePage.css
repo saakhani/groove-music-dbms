@@ -26,8 +26,34 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: 100%;
+}
+
+.search-results-container::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+
+}
+
+.search-results-container::-webkit-scrollbar-track {
+  background-color: #1114182f;
+  border-radius: 20px;
+}
+
+.search-results-container::-webkit-scrollbar-thumb {
+  background: #000e2139; /* color of the scroll thumb */
+  border-radius: 50px;
+}
+
+.search-results-container::-webkit-scrollbar-thumb:hover {
+  background:rgba(255, 255, 255, 0.065); /* color of the scroll thumb on hover */
+}
+
+/* For Internet Explorer and Edge */
+.search-results-container {
+  scrollbar-face-color: #888;
+  scrollbar-track-color: #f1f1f1;
 }
 
 .homepage .homepage-content{
