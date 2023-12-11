@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/:SearchBoxQuery" element={<HomePage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

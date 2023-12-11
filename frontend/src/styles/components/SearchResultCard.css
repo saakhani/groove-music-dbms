@@ -1,8 +1,8 @@
 /* SearchResultCard.css */
 
 .search-result-card {
-    width: 310px;
-    background-color: #fff;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.065);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 20px;
@@ -15,16 +15,17 @@
     font-weight: bold;
     margin-bottom: 8px;
     margin-top: 8px;
+    color: #a6a6a6;
   }
   
   .result-description {
     font-size: 14px;
-    color: #666;
+    color: #a6a6a6;
     margin-bottom: 16px;
   }
   
   .result-link {
-    color: #007bff;
+    color: #a6a6a6;
     text-decoration: none;
     font-weight: bold;
     display: block;
@@ -33,7 +34,7 @@
   .result-image img{
     border-radius: 8px;
     margin: auto;
-    width: 280px;
+    width: 220px;
     height: auto;  
   }
 
