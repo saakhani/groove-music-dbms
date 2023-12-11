@@ -54,7 +54,14 @@ const SearchResultCard = ({ eventDetailsH, onClick}) => {
   }, [artistName, albumType, albumName]);
 
   const handleClick = () => {
-    onClick(eventDetails);
+    const eventDetailsUpdated = {
+      ...eventDetails,
+      artist: artistName,
+      album: albumName,
+      albumType: albumType,
+      imageSrc: imageSrc,
+    };
+    onClick(eventDetailsUpdated);
   };
 
 

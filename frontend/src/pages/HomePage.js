@@ -50,44 +50,14 @@ const Homepage = () => {
 			.catch(error => console.error('Error fetching search results:', error));
 	}, [searchQuery]);
 
-	const [artistName, setArtistName] = useState('');
-	const [albumName, setAlbumName] = useState('');
-	const [songPosition, setSongPosition] = useState(0);
 
 	const handleResultCardClick = (eventDetails) => {
-			// fetch(`http://localhost:3001/album/${eventDetails.id}`, {
-			// 		method: 'GET',
-			// 		headers: {
-			// 				'Content-Type': 'application/json',
-			// 		},
-			// })
-			// .then(response => response.json())
-			// .then(data => {
-			// 		// console.log(data); // Log the response data here
-			// 		// console.log(data.rows); // Log the response data here
-			// 		const searchData = data.rows.map(item => {
-			// 				return {
-			// 						id: item[0],
-			// 						name: item[1],
-			// 						duration: item[2],
-			// 						artist: item[4],
-			// 						imgSrc: require(`../assets/music/taylor-swift/lp/evermore/cover.jpg`),
-			// 				};
-			// 		});
-	
-			// 		setSearchResults(searchData);
-			// })
-
-			// .catch(error => console.error('Error fetching search results:', error));
-
-
-
-
+		const paddedTrackNumber = eventDetails.track_number.toString().padStart(2, '0');
 		setSongDetails({
 			title: eventDetails.name,
-			artist:	eventDetails.artist,
-			src: require(`../assets/music/taylor-swift/lp/midnights/01.mp3`),
-			albumArt: require(`../assets/music/taylor-swift/lp/midnights/cover.jpg`),
+			artist: eventDetails.artist,
+			src: require(`../assets/music/${eventDetails.artist.toLowerCase().replace(/\s/g, '-')}/${eventDetails.albumType.toLowerCase()}/${eventDetails.album.toLowerCase().replace(/\s/g, '-')}/${paddedTrackNumber}.mp3`),
+			albumArt: require(`../assets/music/${eventDetails.artist.toLowerCase().replace(/\s/g, '-')}/${eventDetails.albumType.toLowerCase()}/${eventDetails.album.toLowerCase().replace(/\s/g, '-')}/cover.jpg`),
 		});
 	};
 
