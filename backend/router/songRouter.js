@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get("/", songController.getAllSongs);
 router.get("/album/:id", songController.getSongsByAlbumID); 
+
+router.post("/addSong", songController.addSong);
 // router.get("/album/:name", songController.getSongsByAlbumName);
 
 

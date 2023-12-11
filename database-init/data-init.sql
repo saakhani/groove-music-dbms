@@ -372,7 +372,10 @@ exec insert_song('Marjorie', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 4.1
 exec insert_song('Closure', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 3.01, 14);
 exec insert_song('Evermore', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 5.04, 15);
 
+
 exec INSERT_ALBUM('Midnights', 'Taylor Swift', 'LP');
+exec insert_song('Maroon', 'Taylor Swift', 'Midnights', '21-OCT-22', 'Pop', 3.38, 2);
+
 exec insert_song('Lavender Haze', 'Taylor Swift', 'Midnights', '21-OCT-22', 'Pop', 3.22, 1);
 
 

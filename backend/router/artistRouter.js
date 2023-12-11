@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.get("/", artistController.getAllArtists);
 router.get("/getName/:id", artistController.getArtistName);
+router.get("/getAllNames", artistController.getAllArtistNames);
 
 module.exports = router;

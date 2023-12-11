@@ -46,7 +46,19 @@ const ProfileWindow = ({onWindowClick, onClose }) => {
 					<p className='user-email'>
 						{email}
 					</p>
-					<a className='view-profile' href='/admin'>admin view</a>
+					<a 
+  className='view-profile' 
+  href='/admin' 
+  onClick={(e) => {
+    const password = window.prompt('Please enter the admin password');
+    if (password !== 'admin') {
+      e.preventDefault();
+      alert('Incorrect password');
+    }
+  }}
+>
+  admin view
+</a>
 				</div>
 				<div className='right'>
 					<img className = "profile-image" src={require(`../assets/profile-pictures/${user.imgSrc}`)} alt="Profile" />  

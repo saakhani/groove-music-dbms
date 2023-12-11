@@ -55,4 +55,28 @@ module.exports = {
       }
     } 
   },
+  
+addSong: async function (req, res) {
+  let connection;
+  try {
+    connection = await getConnection();
+    const { song_name, artist_name, album_name, release_date, genre, duration, song_postion } = req.body;
+    const result = await connection.execute(
+      `exec insert_song('${song_name}', '${artist_name}', '${album_name}', '${release_date}', '${genre}', ${duration}, ${song_postion})`
+    );
+    res.status(200).send(result);
+  } catch (error) {
+    console.error('Error executing SQL query to add song:', error);
+    res.status(500).send('Internal Server Error');
+  } finally {
+    if (connection) {
+      try {
+        // Release the connection when done
+        await connection.close();
+      } catch (error) {
+        console.error('Error closing database connection:', error);
+      }
+    }
+  }
+},
 }

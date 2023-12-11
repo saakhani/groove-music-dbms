@@ -8,7 +8,33 @@ module.exports = {
       connection = await getConnection();
       const table = await connection.execute("SELECT * FROM ARTIST");
       // console.log(table.rows);
-      res.status(200).send(table);
+      res.status(200).send(table.rows);
+    } 
+    catch (error) {
+      console.error('Error executing SQL query to get all artists:', error);
+      res.status(500).send('Internal Server Error');
+    } 
+    finally {
+      if (connection) {
+        try {
+          // Release the connection when done
+          await connection.close();
+        } 
+        catch (error) {
+          console.error('Error closing database connection:', error);
+        }
+      }
+    } 
+  },
+
+  getAllArtistNames: async function  (req, res){
+    let connection ;
+    try {
+      console.log("hitttt--<<<<<<")
+      connection = await getConnection();
+      const table = await connection.execute("SELECT ID, NAME FROM ARTIST");
+      // console.log(table.rows);
+      res.status(200).send(table.rows);
     } 
     catch (error) {
       console.error('Error executing SQL query to get all artists:', error);
