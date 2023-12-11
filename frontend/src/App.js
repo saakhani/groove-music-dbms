@@ -8,6 +8,7 @@ import Layout from "./components/Layout";
 
 import HomePage from './pages/HomePage';
 import { AuthProvider } from './contexts/AuthContext';
+import AdminPage from "./pages/AdminPage";
 
 
 
@@ -18,6 +19,7 @@ function App() {
       <AuthProvider>
         <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
