@@ -3,21 +3,23 @@
 import React from 'react';
 import '../styles/components/SearchResultCard.css'; // Import the CSS file
 import { Outlet, Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
  
-const SearchResultCard = ({ eventDetailsH }) => {
+const SearchResultCard = ({ eventDetailsH}) => {
   const eventDetails = eventDetailsH;
  
   return (
     <div className="search-result-card">
       <div className="result-image">
-        <img src={require(`../assets/event-images/${eventDetails.title.toLowerCase().replace(/ /g, '_')}.jpg`)} alt={`Event: ${eventDetails.title} at ${eventDetails.venue}`} />
+        <img src={eventDetails.imgSrc} alt={`Event: ${eventDetails.title} at ${eventDetails.venue}`} />
       </div>
-      <div className="result-title">{eventDetails.title}</div>
-      <div className="result-venue">{eventDetails.venue}</div>
-      <div className="result-description">{eventDetails.description}</div>
-      <Link className="result-link" to={`/event/${eventDetails.eventID}`}>
-        Book Now
-      </Link>
+      <div className="result-title">{eventDetails.name}</div>
+      <div className="result-venue">{eventDetails.artist}</div>
+      <div className="result-description">{eventDetails.duration}</div>
+      <button className="play-song-button">
+        <FontAwesomeIcon icon={icon({name: 'play', style: 'solid'})}/>
+      </button>
     </div>
   ); 
 };

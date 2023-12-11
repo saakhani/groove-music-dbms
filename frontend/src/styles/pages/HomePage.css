@@ -1,6 +1,7 @@
 html {
     background-image: linear-gradient(#111418 25%, #000e21 100%);
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     width: 100%;
     height: 100%;
 }
@@ -18,6 +19,14 @@ body {
 }
 
 .homepage {
+  height: 100%;
+}
+
+.search-results-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
   height: 100%;
 }
 
@@ -53,3 +62,4 @@ body {
   margin: 0;
   padding: 0;
 }
+
