@@ -7,14 +7,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 500px; */
     padding: 20px;
-    background-color: #e8e8e8;
-    border: 2.5px solid #0391cb;
+    background-color: #2a2d3f77;
+    border: 2.5px solid #2a2d3f77;
     border-radius: 36px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(119, 119, 119, 0.3);
     z-index: 1000;
-}
+  }
+  
+  .login-logo img {
+    width: 100px; /* Set the desired width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Add some space between the logo and the login content */
+  }
 
 .login-comp{
     display: flex;
@@ -31,7 +36,7 @@
 }
 
 .username, .password, .confirm-password, .fullname, .phone{
-    font-family: "M PLUS Rounded 1c", Helvetica;
+    font-family: "Poppins", Helvetica;
     font-size: 19px;
     font-weight: 500;
     color: #2a2d3f;
@@ -52,7 +57,7 @@
 }
 
 .login-popup .login-button{
-    font-family: "M PLUS Rounded 1c", Helvetica;
+    font-family: "Poppins", Helvetica;
     font-size: 24px;
     font-weight: 600;
     color: #ffffff;
@@ -60,13 +65,16 @@
     outline: 0;
     width: 220px;
     vertical-align: middle;
-    background-color: #0391cb;
+    background-color: #1d63b9;
     cursor: pointer;
-
+    border-radius: 54px;
+    height: 60px;
+    border: 0px;
 }
 
-.login-popup .signup-button{
-    font-family: "M PLUS Rounded 1c", Helvetica;
+
+.signup-button{
+    font-family: "Poppins", Helvetica;
     font-size: 24px;
     font-weight: 600;
     color: #ffffff;
@@ -74,7 +82,7 @@
     outline: 0;
     width: 220px;
     vertical-align: middle;
-    background-color: #0391cb;
+    background-color: #1d63b9;
     cursor: pointer;
     border-radius: 54px;
     border: 0;
@@ -82,19 +90,19 @@
 }
 
 .login-title, .signup-title {
-    font-family: "M PLUS Rounded 1c", Helvetica;
-    font-size: 24px;
+    font-family: "Poppins", Helvetica;
+    font-size: 36px;
     font-weight: 600;
-    color: #2a2d3f;
+    color: #ffffff;
     margin: 10px;
     margin-bottom: 20px;
 }
 
 .login-footer, .signup-footer {
-    font-family: "M PLUS Rounded 1c", Helvetica;
+    font-family: "Poppins", Helvetica;
     font-size: 16px;
     font-weight: 500;
-    color: #2a2d3f;
+    color: #ffffff;
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -111,11 +119,10 @@
 }
 
 .error-message {
-    font-family: "M PLUS Rounded 1c", Helvetica;
+    font-family: "Poppins", Helvetica;
     font-size: 16px;
     font-weight: 500;
     color: #ff0000;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
