@@ -30,6 +30,8 @@ html {
     color: white;
 }
 
+
+
 .song-form select {
     -webkit-appearance: none; /* Improves appearance on WebKit browsers */
     -moz-appearance: none;   /* Improves appearance on Mozilla browsers */
@@ -51,4 +53,17 @@ html {
 
 .song-form button:hover {
     background-color: #1ed760;
+}
+
+.song-form button:hover {
+    background-color: #1ed760;
+}
+
+/* Additional styles for sidebar and other content */
+.sidebar {
+    /* Styles for the sidebar */
+}
+
+.content {
+    /* Styles for the main content area */
 }
