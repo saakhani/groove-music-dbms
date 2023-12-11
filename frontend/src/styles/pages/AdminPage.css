@@ -10,28 +10,36 @@ html {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    color: white;
+    color: #2a2d3f77;
 }
+
+
+
 
 .song-form {
     display: flex;
     flex-direction: column;
     max-width: 500px;
+    padding: 75%;
     width: 100%;
-    margin-top: 20px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
 }
 
 .song-form input, .song-form select {
     margin-bottom: 10px;
     padding: 8px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid #2a2d3f ;
+    ;
     background-color: #282828;
-    color: white;
+    color: #f6f6f6;
+    font-size: 16px;
+    
+    
 }
-
-
-
 .song-form select {
     -webkit-appearance: none; /* Improves appearance on WebKit browsers */
     -moz-appearance: none;   /* Improves appearance on Mozilla browsers */
@@ -40,30 +48,48 @@ html {
 
 .song-form button {
     padding: 10px;
-    background-color: #1db954; /* Spotify green, adjust as needed */
+    background-color: #1d63b9da; /* Spotify green, adjust as needed */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    width: 25%;
+    width: 75% ;
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .song-form button:hover {
-    background-color: #1ed760;
+    background-color: #1d63b9da;
 }
 
-.song-form button:hover {
-    background-color: #1ed760;
-}
 
-/* Additional styles for sidebar and other content */
+/* Styles for the sidebar */
 .sidebar {
-    /* Styles for the sidebar */
+     /* Adjust the width as needed */
+    background-color: #333;
+    color: #f6f6f6;
+    padding: 0;
 }
 
-.content {
-    /* Styles for the main content area */
+/* Optional: Add a transition effect for a smooth sidebar animation */
+.sidebar, .content {
+    transition: margin 0.3s ease;
+    padding: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+/* Add a class to the body to toggle the sidebar */
+.sidebar-hidden .sidebar {
+    margin-left: -250px; /* Hide the sidebar by moving it off-screen */
+}
+
+.sidebar-hidden .content {
+    margin-left: 0; /* Adjust the content margin when the sidebar is hidden */
 }

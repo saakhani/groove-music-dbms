@@ -5,7 +5,6 @@ import './App.css';
 import { Link } from "react-router-dom";
 import Layout from "./components/Layout";
 
-
 import HomePage from './pages/HomePage';
 import { AuthProvider } from './contexts/AuthContext';
 import AdminPage from "./pages/AdminPage";
