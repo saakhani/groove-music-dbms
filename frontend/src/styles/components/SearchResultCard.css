@@ -7,6 +7,8 @@
     margin: 15px;
     padding: 10px;
     box-sizing: border-box;
+    flex-grow: 0;
+    align-self: start;
   }
 
   .search-result-card:hover {

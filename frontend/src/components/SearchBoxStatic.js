@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 
-function SearchBoxStatic({inputQuery}) {
+function SearchBoxStatic({inputQuery, onSearchBox}) {
   // State to manage the input value
   const [inputValue, setInputValue] = useState(inputQuery);
 
@@ -31,7 +31,7 @@ function SearchBoxStatic({inputQuery}) {
       alert("Please enter a search term")
     }
     else{
-      window.location.href = '/Search/' + inputValue;
+      onSearchBox(inputValue);
     }
   }
 

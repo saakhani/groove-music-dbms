@@ -86,7 +86,7 @@ module.exports = {
       connection = await getConnection();
       const query = `INSERT INTO ARTIST (NAME) VALUES (:1)`;
       const binds = [
-        req.body.name,
+        req.body.artist_name,
       ];
       const options = {
         autoCommit: true,
@@ -96,7 +96,7 @@ module.exports = {
       res.status(202).send("Added");
     } 
     catch (error) {
-      console.error('Error executing SQL query to get all artists:', error);
+      console.error('Error executing SQL query to insert artist:', error);
       res.status(500).send('Internal Server Error');
     } 
     finally {

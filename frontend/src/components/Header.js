@@ -8,7 +8,7 @@ import Login from './LoginSignUp.js';
 import SearchBoxStatic from "./SearchBoxStatic.js";
 import ProfileWindow from './ProfileWindow.js';
 
-function Header({inputQueryHeader}) {
+function Header({inputQueryHeader, onSearchHeader}) {
 
   const [isLoginVisible, setIsLoginVisible] = useState(false);
   const [isProfileVisible, setIsProfileVisible] = useState(false);
@@ -40,6 +40,10 @@ function Header({inputQueryHeader}) {
     }
   }
 
+  const onSearchHere = (inputValue) => {
+    onSearchHeader(inputValue);
+  }
+
   const handleSignUp = (userData) => {
     setIsLoginVisible(false);
   }
@@ -63,7 +67,7 @@ function Header({inputQueryHeader}) {
           </button>
         </div>
         <div className="search-box-static">
-          <SearchBoxStatic inputQuery= {inputQueryHeader}/>
+          <SearchBoxStatic inputQuery= {inputQueryHeader} onSearchBox={onSearchHere}/>
         </div>
         {!isLoggedIn && (<button className = "login-button-header" onClick={loginButtonEvent} type="submit">      
           login

@@ -13,7 +13,7 @@ const Homepage = () => {
     // };
 
 		const params = useParams();
-		const [searchQuery] = useState(params.SearchBoxQuery);
+		const [searchQuery, setSearchQuery] = useState("");
 		const [searchResults, setSearchResults] = useState([]);
 		const [songDetails, setSongDetails] = useState({			
 			title: 'willow',
@@ -26,7 +26,7 @@ const Homepage = () => {
 
 	
 		useEffect(() => {
-			fetch('http://localhost:3001/song', {
+			fetch(`http://localhost:3001/song/songSearch/${searchQuery}`, {
 					method: 'GET',
 					headers: {
 							'Content-Type': 'application/json',
@@ -63,12 +63,17 @@ const Homepage = () => {
 		});
 	};
 
+const handleSearch = (searchQueryBox) => {
+	setSearchQuery(searchQueryBox);
+	console.log(searchQueryBox);
+};
+	
 
 
     return (
         <div className='homepage'>
 					<div className='homepage-header'>
-						<Header inputQueryHeader={searchQuery}/>
+						<Header inputQueryHeader={searchQuery} onSearchHeader={handleSearch}/>
 					</div>
 						<div className='homepage-content'>
 							<div className='homepage-content-other'>

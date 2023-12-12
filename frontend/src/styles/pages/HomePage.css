@@ -29,6 +29,8 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
+  flex-grow: 0;
+  row-gap: 0px;
 }
 
 .search-results-container::-webkit-scrollbar {
