@@ -375,9 +375,12 @@ exec insert_song('Evermore', 'Taylor Swift', 'Evermore', '11-DEC-20', 'Pop', 5.0
 
 exec INSERT_ALBUM('Midnights', 'Taylor Swift', 'LP');
 exec insert_song('Maroon', 'Taylor Swift', 'Midnights', '21-OCT-22', 'Pop', 3.38, 2);
+exec insert_song('Anti-Hero', 'Taylor Swift', 'Midnights', '21-OCT-22', 'Pop', 200, 3);
+
+SELECT * FROM SONG WHERE NAME = 'Anti-Hero';
+SELECT * FROM ALBUM WHERE NAME = 'Midnights';
 
 exec insert_song('Lavender Haze', 'Taylor Swift', 'Midnights', '21-OCT-22', 'Pop', 3.22, 1);
-
 
 
 SELECT * FROM ARTIST;
