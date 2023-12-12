@@ -77,5 +77,38 @@ module.exports = {
         }
       }
     } 
+  },
+
+  addArtist: async function  (req, res){
+    let connection ;
+    try {
+      console.log("hitttt--<<<<<<")
+      connection = await getConnection();
+      const query = `INSERT INTO ARTIST (NAME) VALUES (:1)`;
+      const binds = [
+        req.body.name,
+      ];
+      const options = {
+        autoCommit: true,
+      };
+
+      await connection.execute(query, binds, options);
+      res.status(202).send("Added");
+    } 
+    catch (error) {
+      console.error('Error executing SQL query to get all artists:', error);
+      res.status(500).send('Internal Server Error');
+    } 
+    finally {
+      if (connection) {
+        try {
+          // Release the connection when done
+          await connection.close();
+        } 
+        catch (error) {
+          console.error('Error closing database connection:', error);
+        }
+      }
+    } 
   }
 }
